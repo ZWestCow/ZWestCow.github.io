@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zwestcow.github.io/%E6%9C%80%E5%A4%A7%E6%B5%81%E9%97%AE%E9%A2%98Edmonds-Karp%E7%AE%97%E6%B3%95.html</loc>
+    
+    <lastmod>2018-05-01T11:14:02.010Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zwestcow.github.io/example.html</loc>
     
-    <lastmod>2018-05-01T00:33:50.251Z</lastmod>
+    <lastmod>2018-05-01T08:49:31.518Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zwestcow.github.io/hello-world.html</loc>
+    
+    <lastmod>2018-05-01T08:48:36.956Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zwestcow.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-05-01T05:56:35.611Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zwestcow.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-05-01T05:54:03.446Z</lastmod>
     
   </url>
   
@@ -12,27 +40,6 @@
     <loc>https://zwestcow.github.io/robots.html</loc>
     
     <lastmod>2018-04-29T15:19:34.697Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zwestcow.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-04-29T15:16:34.755Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zwestcow.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-04-29T15:15:28.085Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zwestcow.github.io/hello-world.html</loc>
-    
-    <lastmod>2018-04-28T14:41:28.024Z</lastmod>
     
   </url>
   
