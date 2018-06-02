@@ -7,19 +7,20 @@
   
   
   
-  <title>Z&#39;s Blog</title>
+  <title>用Hexo搭建自己的网站-环境配置 | Z&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: tagsdate: 2015-10-20 06:49:50type: “tags”layout: “tags” comments: false">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Z&#39;s Blog">
-<meta property="og:url" content="https://zwestcow.github.io/tags/index.html">
+  <meta name="description" content="介绍一下如何用hexo写自己的网站">
+<meta name="keywords" content="hexo,博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Hexo搭建自己的网站-环境配置">
+<meta property="og:url" content="https://zwestcow.github.io/用hexo搭建自己的网站-环境配置.html">
 <meta property="og:site_name" content="Z&#39;s Blog">
-<meta property="og:description" content="title: tagsdate: 2015-10-20 06:49:50type: “tags”layout: “tags” comments: false">
+<meta property="og:description" content="介绍一下如何用hexo写自己的网站">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-01T05:56:35.611Z">
+<meta property="og:updated_time" content="2018-05-20T07:42:43.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Z&#39;s Blog">
-<meta name="twitter:description" content="title: tagsdate: 2015-10-20 06:49:50type: “tags”layout: “tags” comments: false">
+<meta name="twitter:title" content="用Hexo搭建自己的网站-环境配置">
+<meta name="twitter:description" content="介绍一下如何用hexo写自己的网站">
   
     <link rel="alternative" href="/atom.xml" title="Z&#39;s Blog" type="application/atom+xml">
   
@@ -44,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -262,11 +263,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-用hexo搭建自己的网站-环境配置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/tags/index.html" class="article-date">
-      <time datetime="2018-05-05T13:59:55.568Z" itemprop="datePublished">2018-05-05</time>
+      <a  href="/用hexo搭建自己的网站-环境配置.html" class="article-date">
+      <time datetime="2018-05-20T06:38:59.000Z" itemprop="datePublished">2018-05-20</time>
 </a>
 
     </div>
@@ -276,128 +277,138 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Hexo搭建自己的网站-环境配置
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blogs/">博客</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>介绍一下如何用hexo写自己的网站</p>
+<a id="more"></a>
+<p>细心的童鞋想必已经发现了我的博客右下角 <code>hexo</code> 字样，这其实就是我制作网站的工具。</p>
+<p>基本环境搭建步骤如下：</p>
+<p>node.js -&gt; Git -&gt; hexo -&gt; 测试运行</p>
+<h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><hr>
+<p>大家可以去<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载，安装时无脑点确定即可~</p>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><hr>
+<p>一样，去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">官网</a>下载，上面 <code>click here to download manually.</code> 按钮好像没用，点下面的选项下载。一样无脑确定</p>
+<h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><hr>
+<p>当前面都装好了后，打开cmd,键入<code>npm install -g hexo-cli</code>就完成了。</p>
+<h1 id="创建你的第一个测试页面"><a href="#创建你的第一个测试页面" class="headerlink" title="创建你的第一个测试页面"></a>创建你的第一个测试页面</h1><hr>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>先随便创建一个文件夹，最好直接在磁盘下面，不要套在文件夹下面，不然以后可能会有意想不到的麻烦。<code>cd</code>到你创建的文件夹下，输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init  # hexo会在目标文件夹建立网站所需要的所有文件</span><br><span class="line">npm install  # 安装依赖包</span><br></pre></td></tr></table></figure></p>
+<h2 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h2><p>输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 等同于hexo generate，生成静态文件</span><br><span class="line">hexo s # 等同于hexo server，在本地服务器运行</span><br></pre></td></tr></table></figure></p>
+<p>之后打开浏览器并输入IP地址 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 查看.<br>如果出错了，在<code>cmd</code>中输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s -p <span class="number">4001</span> # 用<span class="number">4001</span>端口打开，而不是默认的<span class="number">4000</span></span><br></pre></td></tr></table></figure></p>
+<p>之后打开浏览器并输入IP地址 <a href="http://localhost:4001" target="_blank" rel="noopener">http://localhost:4001</a> 查看.</p>
 
-
-    <!-- Tag Cloud Page -->
-    <hr>
-    <br>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">算法</a><span class="category-list-count">3</span></li></ul>
-
-    <p class="count"></p>
-    <div class="tags">
-        <a href="/tags/hexo/" style="font-size: 25.5px; color: #c0c0c0">hexo</a> <a href="/tags/blogs/" style="font-size: 25.5px; color: #c0c0c0">博客</a> <a href="/tags/字符串/" style="font-size: 16px; color: #808080">字符串</a> <a href="/tags/example/" style="font-size: 25.5px; color: #c0c0c0">示例</a> <a href="/tags/algorithm/" style="font-size: 35px; color: #fff">算法</a> <a href="/tags/internet/" style="font-size: 25.5px; color: #c0c0c0">网络流</a>
-    </div>
-    <style>
-        .category-list li{
-            display: inline-block;
-            margin: 0 1em .5em 0;
-            padding: 4px;
-            border: 1px solid lightgray;
-            font-size: 1.2em;
-        }
-        .category-list a {
-            color: gray;
-        }
-        .category-list-item:hover a {
-            color: gray;
-            text-decoration: none;
-        }
-        .category-list-count {
-            margin-left: 2px;
-            font-size: .9em;
-        }
-        .article-entry ul li:before{
-            display: none;
-        }
-        .article-inner  {
-            text-align: center;
-        }
-        .tags {
-            max-width: 40em;
-            margin: 2em auto;
-            margin-top: 0em;
-        }
-        .tags a {
-            margin-right: 1em;
-            line-height: 65px;
-            border-bottom: 1px solid gray;
-            white-space: nowrap;
-        }
-        .tags a:hover {
-            border-bottom: 2px solid black;
-            text-decoration: none;
-            font-style: italic;
-        }
-        #count > span {
-            margin: auto .2em;
-            font-weight: bold;
-        }
-    </style>
-
-    <!-- Count tags and categories -->
-
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <p id="count">
-            已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-            共计<span><script>document.write($(".tags > a").length)</script></span>个标签。
-    </p>
-    <script>
-        $('#count').appendTo('.count');
-    </script>
-
-
-          
-        <hr>
-<p>title: tags<br>date: 2015-10-20 06:49:50<br>type: “tags”<br>layout: “tags”</p>
-<h2 id="comments-false"><a href="#comments-false" class="headerlink" title="comments: false"></a>comments: false</h2>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/用hexo搭建自己的网站-环境配置.html">用Hexo搭建自己的网站-环境配置</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 ZWestCow 的个人博客">ZWestCow</a></p>
+        <p><span>发布时间:</span>2018年05月20日 - 14时38分</p>
+        <p><span>最后更新:</span>2018年05月20日 - 15时42分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/用hexo搭建自己的网站-环境配置.html" title="用Hexo搭建自己的网站-环境配置">https://zwestcow.github.io/用hexo搭建自己的网站-环境配置.html</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zwestcow.github.io/用hexo搭建自己的网站-环境配置.html　　作者: ZWestCow" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a  href="/用hexo搭建自己的网站-写文章.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          用Hexo搭建自己的网站-写文章
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/基础二分图的最大匹配问题.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基础二分图的最大匹配问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#node"><span class="toc-number">1.</span> <span class="toc-text">node</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Git"><span class="toc-number">2.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo"><span class="toc-number">3.</span> <span class="toc-text">hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建你的第一个测试页面"><span class="toc-number">4.</span> <span class="toc-text">创建你的第一个测试页面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">4.1.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地启动"><span class="toc-number">4.2.</span> <span class="toc-text">本地启动</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
 
 
 
@@ -430,6 +441,43 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/用hexo搭建自己的网站-写文章.html" title="上一篇: 用Hexo搭建自己的网站-写文章">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/基础二分图的最大匹配问题.html" title="下一篇: 基础二分图的最大匹配问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/高效的单字符串匹配算法Horspool.html">高效的单字符串匹配算法Horspool</a></li><li class="post-list-item"><a class="post-list-link" href="/用hexo搭建自己的网站-写文章.html">用Hexo搭建自己的网站-写文章</a></li><li class="post-list-item"><a class="post-list-link" href="/用hexo搭建自己的网站-环境配置.html">用Hexo搭建自己的网站-环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/基础二分图的最大匹配问题.html">基础二分图的最大匹配问题</a></li><li class="post-list-item"><a class="post-list-link" href="/最大流问题Edmonds-Karp算法.html">最大流问题Edmonds-Karp算法</a></li><li class="post-list-item"><a class="post-list-link" href="/example.html">Example</a></li><li class="post-list-item"><a class="post-list-link" href="/hello-world.html">Hello World</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 

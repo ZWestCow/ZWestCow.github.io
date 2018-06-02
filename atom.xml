@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zwestcow.github.io/"/>
-  <updated>2018-05-10T11:53:13.550Z</updated>
+  <updated>2018-06-01T10:17:41.765Z</updated>
   <id>https://zwestcow.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高效的单字符串匹配算法Horspool</title>
+    <link href="https://zwestcow.github.io/%E9%AB%98%E6%95%88%E7%9A%84%E5%8D%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95Horspool.html"/>
+    <id>https://zwestcow.github.io/高效的单字符串匹配算法Horspool.html</id>
+    <published>2018-05-31T12:09:22.000Z</published>
+    <updated>2018-06-01T10:17:41.765Z</updated>
+    
+    <content type="html"><![CDATA[<p>在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（<del>看毛片</del>）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。</p><a id="more"></a><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><hr><p>先来定义一些东西（<code>S，原串；P，匹配串；‘|’匹配成功；‘#’匹配失败</code>）</p><p>Horspool看是否匹配时是从后往前扫描的，若全部匹配，则找到一个可匹配的方案<del>free话</del>，若有一个不匹配，则当前方案不存在<del>free话真多</del>。这时就要分情况讨论了。</p><p>情况一：</p><p>在下例情况中，称S中的‘d’为关键字符，就是P最后一个字符在S中的匹配字符。若P中除尾字符外没有与关键字符相同的字符，<del>显然</del>应该将P向后推len(P)个位置。</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S - <span class="strong">*****</span>bcd<span class="strong">*****</span>**</span><br><span class="line"><span class="code">         #||</span></span><br><span class="line">P -  2333acd</span><br><span class="line">  --&gt;       2333acd</span><br></pre></td></tr></table></figure><p>情况二：</p><p>若P中除尾字符外有与关键字符相同的字符，<del>显然</del>应该将P向后推到P中最靠右的关键字符与S中的关键字符对齐。</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S - <span class="strong">*****</span>bcd<span class="strong">*****</span>**</span><br><span class="line"><span class="code">         #||</span></span><br><span class="line">P -  233dacd</span><br><span class="line">  --&gt;   233dacd</span><br></pre></td></tr></table></figure><p>自我感觉比BM好多了，简洁高效。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><hr><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现查找S中有多少个与P完全相同的子串 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> S[<span class="number">1000</span>],P[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> ans,n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">HorspoolTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *P)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(P);  </span><br><span class="line">    <span class="keyword">int</span>* ht=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];  <span class="comment">//ht：Horspool的表，255为ASCII上限 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">256</span>;i++)  ht[i]=n;<span class="comment">//P中找不到这个字符就后移n位 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span><span class="comment">/*不包括P中的尾字符*/</span>;i++)  ht[(<span class="keyword">int</span>)P[i]]=n-i<span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">return</span> ht;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Horspool</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span>* ht=HorspoolTable(P);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n-m;)&#123;  </span><br><span class="line">    <span class="keyword">int</span> k=n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (k=m<span class="number">-1</span>;k&gt;=<span class="number">0</span>&amp;&amp;S[i+k]==P[k];k--);  </span><br><span class="line">        <span class="keyword">if</span> (k==<span class="number">-1</span>)  ans++; <span class="comment">//全部匹配，ans++ </span></span><br><span class="line">        i=i+ht[(<span class="keyword">int</span>)S[i+m<span class="number">-1</span>]]; <span class="comment">//否则后移对应位数 </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">delete</span> []ht;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,S,P);</span><br><span class="line">n=<span class="built_in">strlen</span>(S);  </span><br><span class="line">    m=<span class="built_in">strlen</span>(P);  </span><br><span class="line">Horspool();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（&lt;del&gt;看毛片&lt;/del&gt;）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://zwestcow.github.io/categories/algorithm/"/>
+    
+    
+      <category term="算法" scheme="https://zwestcow.github.io/tags/algorithm/"/>
+    
+      <category term="字符串" scheme="https://zwestcow.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Hexo搭建自己的网站-写文章</title>
+    <link href="https://zwestcow.github.io/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99-%E5%86%99%E6%96%87%E7%AB%A0.html"/>
+    <id>https://zwestcow.github.io/用hexo搭建自己的网站-写文章.html</id>
+    <published>2018-05-26T07:18:19.000Z</published>
+    <updated>2018-05-26T08:00:06.087Z</updated>
+    
+    <content type="html"><![CDATA[<p>如标题所述</p><a id="more"></a><p>在根目录下输入<code>hexo new &quot;title&quot;</code>命令，在source/_post/文件夹下会出现一个”title.md”</p><p>打开然后就可以编辑了，语法是markdown。</p><p><code>&lt;!-- more --&gt;</code>用来分割梗概与正文。</p><p><code>categories</code>与<code>tags</code>分别是分类与标签，以tags为例语法是<code>tags: [tag1,tag2,tag3...tagn]</code></p><p>放个例子下来自己理解</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: example</span><br><span class="line">date: 2018-05-01 16:32:31</span><br><span class="line">tags: [示例]</span><br><span class="line">---</span><br><span class="line">测试用页面</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"><span class="section"># 测试一</span></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">$E=mc^2$ </span><br><span class="line"></span><br><span class="line">​<span class="code">``` python</span></span><br><span class="line"><span class="code">import pyqt</span></span><br><span class="line"><span class="code">​</span></span><br></pre></td></tr></table></figure><p><del>删除线</del><br><code>`</code></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如标题所述&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="https://zwestcow.github.io/categories/blog/"/>
+    
+    
+      <category term="hexo" scheme="https://zwestcow.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://zwestcow.github.io/tags/blogs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Hexo搭建自己的网站-环境配置</title>
+    <link href="https://zwestcow.github.io/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.html"/>
+    <id>https://zwestcow.github.io/用hexo搭建自己的网站-环境配置.html</id>
+    <published>2018-05-20T06:38:59.000Z</published>
+    <updated>2018-05-20T07:42:43.739Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍一下如何用hexo写自己的网站</p><a id="more"></a><p>细心的童鞋想必已经发现了我的博客右下角 <code>hexo</code> 字样，这其实就是我制作网站的工具。</p><p>基本环境搭建步骤如下：</p><p>node.js -&gt; Git -&gt; hexo -&gt; 测试运行</p><h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><hr><p>大家可以去<a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a>下载，安装时无脑点确定即可~</p><h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><hr><p>一样，去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">官网</a>下载，上面 <code>click here to download manually.</code> 按钮好像没用，点下面的选项下载。一样无脑确定</p><h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><hr><p>当前面都装好了后，打开cmd,键入<code>npm install -g hexo-cli</code>就完成了。</p><h1 id="创建你的第一个测试页面"><a href="#创建你的第一个测试页面" class="headerlink" title="创建你的第一个测试页面"></a>创建你的第一个测试页面</h1><hr><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>先随便创建一个文件夹，最好直接在磁盘下面，不要套在文件夹下面，不然以后可能会有意想不到的麻烦。<code>cd</code>到你创建的文件夹下，输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init  # hexo会在目标文件夹建立网站所需要的所有文件</span><br><span class="line">npm install  # 安装依赖包</span><br></pre></td></tr></table></figure></p><h2 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h2><p>输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 等同于hexo generate，生成静态文件</span><br><span class="line">hexo s # 等同于hexo server，在本地服务器运行</span><br></pre></td></tr></table></figure></p><p>之后打开浏览器并输入IP地址 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 查看.<br>如果出错了，在<code>cmd</code>中输入以下命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s -p <span class="number">4001</span> # 用<span class="number">4001</span>端口打开，而不是默认的<span class="number">4000</span></span><br></pre></td></tr></table></figure></p><p>之后打开浏览器并输入IP地址 <a href="http://localhost:4001" target="_blank" rel="noopener">http://localhost:4001</a> 查看.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍一下如何用hexo写自己的网站&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="https://zwestcow.github.io/categories/blog/"/>
+    
+    
+      <category term="hexo" scheme="https://zwestcow.github.io/tags/hexo/"/>
+    
+      <category term="博客" scheme="https://zwestcow.github.io/tags/blogs/"/>
+    
+  </entry>
   
   <entry>
     <title>基础二分图的最大匹配问题</title>
