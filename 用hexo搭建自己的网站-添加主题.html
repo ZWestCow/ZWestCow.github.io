@@ -7,20 +7,20 @@
   
   
   
-  <title>高效的单字符串匹配算法Horspool | Z&#39;s Blog</title>
+  <title>用Hexo搭建自己的网站-添加主题 | Z&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（看毛片）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。">
-<meta name="keywords" content="算法,字符串">
+  <meta name="description" content="如标题所述">
+<meta name="keywords" content="hexo,博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高效的单字符串匹配算法Horspool">
-<meta property="og:url" content="https://zwestcow.github.io/高效的单字符串匹配算法Horspool.html">
+<meta property="og:title" content="用Hexo搭建自己的网站-添加主题">
+<meta property="og:url" content="https://zwestcow.github.io/用hexo搭建自己的网站-添加主题.html">
 <meta property="og:site_name" content="Z&#39;s Blog">
-<meta property="og:description" content="在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（看毛片）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。">
+<meta property="og:description" content="如标题所述">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T10:17:41.765Z">
+<meta property="og:updated_time" content="2018-06-09T09:52:23.493Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高效的单字符串匹配算法Horspool">
-<meta name="twitter:description" content="在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（看毛片）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。">
+<meta name="twitter:title" content="用Hexo搭建自己的网站-添加主题">
+<meta name="twitter:description" content="如标题所述">
   
     <link rel="alternative" href="/atom.xml" title="Z&#39;s Blog" type="application/atom+xml">
   
@@ -263,11 +263,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-高效的单字符串匹配算法Horspool" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-用hexo搭建自己的网站-添加主题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/高效的单字符串匹配算法Horspool.html" class="article-date">
-      <time datetime="2018-05-31T12:09:22.000Z" itemprop="datePublished">2018-05-31</time>
+      <a  href="/用hexo搭建自己的网站-添加主题.html" class="article-date">
+      <time datetime="2018-06-09T03:33:20.000Z" itemprop="datePublished">2018-06-09</time>
 </a>
 
     </div>
@@ -281,7 +281,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      高效的单字符串匹配算法Horspool
+      用Hexo搭建自己的网站-添加主题
     </h1>
   
 
@@ -291,13 +291,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/algorithm/">算法</a>
+    <a class="article-category-link" href="/categories/blog/">blog</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">算法</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blogs/">博客</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -307,20 +307,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在单字符串匹配算法的领域中，有两种为人熟知的算法：KMP（<del>看毛片</del>）和BM算法，这两种算法虽然经典，不过难码。实际上许多简单的算法速度也是飞快。于是就让我们来认识一下BM的简化版——Horspool，效率比KMP、BM都快，还好理解。</p>
+        <p> 如标题所述</p>
 <a id="more"></a>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><hr>
-<p>先来定义一些东西（<code>S，原串；P，匹配串；‘|’匹配成功；‘#’匹配失败</code>）</p>
-<p>Horspool看是否匹配时是从后往前扫描的，若全部匹配，则找到一个可匹配的方案<del>free话</del>，若有一个不匹配，则当前方案不存在<del>free话真多</del>。这时就要分情况讨论了。</p>
-<p>情况一：</p>
-<p>在下例情况中，称S中的‘d’为关键字符，就是P最后一个字符在S中的匹配字符。若P中除尾字符外没有与关键字符相同的字符，<del>显然</del>应该将P向后推len(P)个位置。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S - *****bcd*******</span><br><span class="line">         <span class="comment">#||</span></span><br><span class="line">P -  <span class="number">2333</span>acd</span><br><span class="line">  <span class="comment">--&gt;       2333acd</span></span><br></pre></td></tr></table></figure>
-<p>情况二：</p>
-<p>若P中除尾字符外有与关键字符相同的字符，<del>显然</del>应该将P向后推到P中最靠右的关键字符与S中的关键字符对齐。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S - *****bcd*******</span><br><span class="line">         <span class="comment">#||</span></span><br><span class="line">P -  <span class="number">233</span>dacd</span><br><span class="line">  <span class="comment">--&gt;   233dacd</span></span><br></pre></td></tr></table></figure>
-<p>自我感觉比BM好多了，简洁高效。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><hr>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现查找S中有多少个与P完全相同的子串 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> S[<span class="number">1000</span>],P[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> ans,n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">HorspoolTable</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *P)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> n = <span class="built_in">strlen</span>(P);  </span><br><span class="line">    <span class="keyword">int</span>* ht=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];  <span class="comment">//ht：Horspool的表，255为ASCII上限 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">256</span>;i++)  ht[i]=n;<span class="comment">//P中找不到这个字符就后移n位 </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span><span class="comment">/*不包括P中的尾字符*/</span>;i++)  ht[(<span class="keyword">int</span>)P[i]]=n-i<span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">return</span> ht;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Horspool</span><span class="params">()</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span>* ht=HorspoolTable(P);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n-m;)&#123;  </span><br><span class="line">    	<span class="keyword">int</span> k=n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (k=m<span class="number">-1</span>;k&gt;=<span class="number">0</span>&amp;&amp;S[i+k]==P[k];k--);  </span><br><span class="line">        <span class="keyword">if</span> (k==<span class="number">-1</span>)  ans++; <span class="comment">//全部匹配，ans++ </span></span><br><span class="line">        i=i+ht[(<span class="keyword">int</span>)S[i+m<span class="number">-1</span>]]; <span class="comment">//否则后移对应位数 </span></span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">delete</span> []ht;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,S,P);</span><br><span class="line">	n=<span class="built_in">strlen</span>(S);  </span><br><span class="line">    m=<span class="built_in">strlen</span>(P);  </span><br><span class="line">	Horspool();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>hexo是一个平台，有许多人为其开发了主题，若想要换主题，可以直接去官网<a href="https://hexo.io/themes/找合适的主题。" target="_blank" rel="noopener">https://hexo.io/themes/找合适的主题。</a></p>
+<p>这些主题基本上都是链接在github的开源项目，所以你可能需要先注册一个GitHub账户。</p>
+<p>至于具体操作，每个主题都不一样，功能也不尽相同，安装方法也略有区别，不过开发者应该都配备有详细介绍，大伙自个儿钻研吧（跑）</p>
+<p>另外如果看到了某位大佬（先声明，绝对不包括我）的博客，觉得好，想要模（zhan）仿（wei）一（ji）个（you），可以关注一下这个博客的右下角，基本上可以找到这个主题名字，还有GitHub贮存库的链接。</p>
 
       
     </div>
@@ -329,13 +321,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/高效的单字符串匹配算法Horspool.html">高效的单字符串匹配算法Horspool</a></p>
+        <p><span>本文标题:</span><a  href="/用hexo搭建自己的网站-添加主题.html">用Hexo搭建自己的网站-添加主题</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 ZWestCow 的个人博客">ZWestCow</a></p>
-        <p><span>发布时间:</span>2018年05月31日 - 20时09分</p>
-        <p><span>最后更新:</span>2018年06月01日 - 18时17分</p>
+        <p><span>发布时间:</span>2018年06月09日 - 11时33分</p>
+        <p><span>最后更新:</span>2018年06月09日 - 17时52分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/高效的单字符串匹配算法Horspool.html" title="高效的单字符串匹配算法Horspool">https://zwestcow.github.io/高效的单字符串匹配算法Horspool.html</a>
-            <span class="copy-path" data-clipboard-text="原文: https://zwestcow.github.io/高效的单字符串匹配算法Horspool.html　　作者: ZWestCow" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/用hexo搭建自己的网站-添加主题.html" title="用Hexo搭建自己的网站-添加主题">https://zwestcow.github.io/用hexo搭建自己的网站-添加主题.html</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zwestcow.github.io/用hexo搭建自己的网站-添加主题.html　　作者: ZWestCow" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -346,18 +338,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/用hexo搭建自己的网站-添加主题.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/求任意多边形面积.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          用Hexo搭建自己的网站-添加主题
+          求任意多边形面积
         
       </div>
     </a>
   
   
-    <a  href="/用hexo搭建自己的网站-写文章.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">用Hexo搭建自己的网站-写文章</div>
+    <a  href="/高效的单字符串匹配算法Horspool.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高效的单字符串匹配算法Horspool</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -369,7 +361,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -442,13 +434,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/用hexo搭建自己的网站-添加主题.html" title="上一篇: 用Hexo搭建自己的网站-添加主题">
+            <a  href="/求任意多边形面积.html" title="上一篇: 求任意多边形面积">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/用hexo搭建自己的网站-写文章.html" title="下一篇: 用Hexo搭建自己的网站-写文章">
+            <a  href="/高效的单字符串匹配算法Horspool.html" title="下一篇: 高效的单字符串匹配算法Horspool">
                 <i class="fa fa-angle-right"></i>
             </a>
         
